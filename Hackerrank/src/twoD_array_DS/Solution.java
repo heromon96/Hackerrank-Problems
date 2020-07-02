@@ -11,47 +11,48 @@ import java.util.regex.*;
 public class Solution {
 
     // Complete the hourglassSum function below.
-    static int hourglassSum(int[][] arr) 
-    {
-    	int horizontalIndex=0, verticalIndex=0, max=0, i=0,j=0;
-    	List<Integer> list = new ArrayList<>();
-    	
-    	while(verticalIndex <= (arr.length-3))
-		{
-		
-		while(horizontalIndex <= (arr.length-3))
-		{
-			for(i=verticalIndex; i<(3+verticalIndex); i++)
-			{
-			
-				for(j=horizontalIndex; j<(3+horizontalIndex); j++)
-				{
-						max=max+arr[i][j];
-				}
-			}
-			
-				
-				max=max-(arr[i-2][j-3]+arr[i-2][j-1]);
-			
-			
-			list.add(max);
-			max=0;
-			horizontalIndex=horizontalIndex+1;
-		}
-			horizontalIndex=0;
-			verticalIndex=verticalIndex+1;
-		}
-    	
-    	max=0;
-    	for(int a: list)
-    	{
-    		if(a>max)
-    		{
-    			max=a;
-    		}
-    	}
-    	
-    	return max;
+    static int hourglassSum(int[][] arr) {
+        int horizontalIndex=0, verticalIndex=0, max=0, i=0,j=0;
+        List<Integer> list = new ArrayList<>();
+        
+        while(verticalIndex <= (arr.length-3))
+        {
+        
+        while(horizontalIndex <= (arr.length-3))
+        {
+            for(i=verticalIndex; i<(3+verticalIndex); i++)
+            {
+            
+                for(j=horizontalIndex; j<(3+horizontalIndex); j++)
+                {
+                        max=max+arr[i][j];
+                }
+            }
+            
+                
+                max=max-(arr[i-2][j-3]+arr[i-2][j-1]);
+            
+            
+            list.add(max);
+            max=0;
+            horizontalIndex=horizontalIndex+1;
+        }
+            horizontalIndex=0;
+            verticalIndex=verticalIndex+1;
+        }
+        
+        max=list.get(0);
+        //System.out.println(max);
+        for(int a: list)
+        {
+            if(a>max)
+            {
+                max=a;
+            }
+        }
+        
+        return max;
+
     }
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -81,3 +82,4 @@ public class Solution {
         scanner.close();
     }
 }
+
