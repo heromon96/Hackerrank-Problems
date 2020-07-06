@@ -12,91 +12,24 @@ public class Solution {
 
     // Complete the minimumSwaps function below.
     static int minimumSwaps(int[] arr) {
-    	
-    	int swapCount=0,temp, N=arr.length, index=0;
-    	int min, max;
-    	boolean status = false;
-    	
-		min = arr[0];
-		for (int i = 1; i < N; i++) {
-			if (min > arr[i]) {
-				min = arr[i];
-				index = i;
-				i = 0;
-				status = true;
-			}
-		}
-
-		if (status == true) {
-			arr[index] = arr[0];
-			arr[0] = min;
-			status = false;
-			swapCount = swapCount + 1; // 0th index is sorted now //
-		}
-
-		
-		
-		
-		max = arr[N - 1];
-		for (int i = N - 1; i > 0; i--) {
-			if (max < arr[i]) {
-				max = arr[i];
-				index = i;
-				i = N - 1;
-				status = true;
-			}
-		}
-
-		if (status == true) {
-			arr[index] = arr[N - 1];
-			arr[N - 1] = max;
-			status = false;
-			swapCount = swapCount + 1; // nth index is sorted now //
-		}
-    	
-    	
-		
-		
-		
-		
-    	int counter=1;
-    	while(counter<(N-2))
-    	{
-    		min = arr[counter];
-    		for (int i = counter+1; i < N-1; i++) {
-    			if (min > arr[i]) {
-    				System.out.println("array[i] : " +arr[i]+ " is < " +min);
-    				min = arr[i];
-    				index = i;
-    				i = counter;
-    				status = true;
-    				
-    			}
-    		}
-    		
-    		if (status == true) {
-    			arr[index] = arr[counter];
-    			arr[counter] = min;
-    			status = false;
-    			
-    			counter=counter+1;
-    			System.out.println(counter);
-    			swapCount = swapCount + 1; // 0th index is sorted now //
-    		}
-    		
-    		else if(status==false)
-    		{
-    			counter=counter+1;
-    		}
-    	}
-    	
-    	for(int a: arr)
-    	{
-    		System.out.println(a);
-    	}
-    	
-    	return swapCount;
-    }
+	int n = arr.length;
+	int swaps = 0;
+	for (int i = 0; i < n; i++){
+	if (i + 1 != arr[i]){
+	int x = arr[i];
+	arr[i] = i + 1;
+	int j = i+1;
+	if(j < n)
+	for ( ; arr[j] != i+1; j++){
+	if (j == n-1)
+	break;
+	}
+	arr[j] = x;
+	++swaps;
+	}
+	}
+	return swaps;
+} 
  
     
    
